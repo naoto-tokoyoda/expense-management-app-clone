@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import './NewExpense.css';
 import ExpenseForm from './ExpenseForm';
 
 const NewExpense = (props) => {
+    const [clickAdButton, setClickAdButton] = useState(false);
 
     const saveExpenseDataHandler = (enteredExpenseData) => {
 
@@ -17,10 +18,26 @@ const NewExpense = (props) => {
         props.onAddExpense(expenseData);
     }
 
+    const clickAddNewExpenseHandler = () => {
+        setClickAdButton(true);
+    }
+
+    //after clicking cancel button, it will close ExpenseForm
+    const closeAddNewExpenseHandler = () => {
+        setClickAdButton(false);
+    }
+
     return (
         <div className='new-expense'>
+
+            {/* When clicking add new expense button, open the form. */}
+            {!clickAdButton && <button onClick={clickAddNewExpenseHandler}>Add New Expence</button>}
+
             {/* go to saveExpenseDataHandler function */}
-           <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}/>   
+           {clickAdButton && <ExpenseForm 
+                                onSaveExpenseData={saveExpenseDataHandler}
+                                onCancel={closeAddNewExpenseHandler}
+                                />}
         </div>
     )
 }

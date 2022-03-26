@@ -31,7 +31,6 @@ function Expenses(props) {
 
       {/* props.items has expense data in App.js and 
       using this dataa with map() and hand it to <ExpenseItem /> */}
-
       <ExpenseList items={filterdExpenses} />
      
 

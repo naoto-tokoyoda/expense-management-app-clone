@@ -41,8 +41,6 @@ function App() {
 
   return (
     <div>
-      <h2>This H2 tag from App.js</h2>
-
       {/* fetch data from NewExpense.js and go to addExpenseHandlre function above */}
       <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses} />
